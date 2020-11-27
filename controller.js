@@ -12,7 +12,8 @@ exports.getAll = function (req, res) {
     let sql = 'select * from mahasiswa';
     connection.query(sql, function (error, rows, fields) {
         if (error) {
-            console.log(error);
+            response.notOk(error, res);
+            //console.log(error);
         } else {
             response.ok(rows, res);
         }
@@ -25,9 +26,26 @@ exports.getById = function (req, res) {
     let sql = 'select * from mahasiswa where id_mahasiswa = ' + id;
     connection.query(sql, function (error, rows, fields) {
         if (error) {
-            console.log(error);
+            response.notOk(error, res);
         } else {
             response.ok(rows, res);
+        }
+    })
+}
+
+//post data students
+exports.postData = function (req, res) {
+    let nim = req.body.nim;
+    let nama = req.body.nama;
+    let jurusan = req.body.jurusan;
+
+    let sql = `insert into mahasiswa (nim, nama, jurusan) values (${nim},'${nama}','${jurusan}')`;
+
+    connection.query(sql, function (error, rows, fields) {
+        if (error) {
+            response.notOk(error, res);
+        } else {
+            response.ok(rows.message, res);
         }
     })
 }

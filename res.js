@@ -1,7 +1,7 @@
 'use strict';
 
 exports.ok = function (values, res) {
-    var data = {
+    let data = {
         'status': 200,
         'values': values
     };
@@ -9,3 +9,13 @@ exports.ok = function (values, res) {
     res.json(data);
     res.end();
 };
+
+exports.notOk = function (values, res) {
+    let data = {
+        'status': 500,
+        'values': values
+    };
+
+    res.json(data);
+    res.end();
+}
