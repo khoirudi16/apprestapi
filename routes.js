@@ -12,4 +12,6 @@ module.exports = function (app) {
     app.route('/post').post(jsonku.postData);
 
     app.route('/put').put(jsonku.putData);
+
+    app.route('/delete').delete(jsonku.deleteData);
 }

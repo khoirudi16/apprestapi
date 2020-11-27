@@ -67,3 +67,16 @@ exports.putData = function (req, res) {
         }
     })
 }
+
+//delete data students by id
+exports.deleteData = function (req, res) {
+    let id = req.body.id_mahasiswa;
+    let sql = `delete from mahasiswa where id_mahasiswa=${id}`;
+    connection.query(sql, function (error, rows, fields) {
+        if (error) {
+            response.notOk(error, res);
+        } else {
+            response.ok(rows.message, res);
+        }
+    })
+}
