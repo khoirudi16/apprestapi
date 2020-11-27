@@ -10,4 +10,6 @@ module.exports = function (app) {
     app.route('/getbyid/:id').get(jsonku.getById);
 
     app.route('/post').post(jsonku.postData);
+
+    app.route('/put').put(jsonku.putData);
 }

@@ -49,3 +49,21 @@ exports.postData = function (req, res) {
         }
     })
 }
+
+//put data students based on id
+exports.putData = function (req, res) {
+    let id = req.body.id_mahasiswa;
+    let nim = req.body.nim;
+    let nama = req.body.nama;
+    let jurusan = req.body.jurusan;
+
+    let sql = `update mahasiswa set nim=${nim}, nama='${nama}', jurusan='${jurusan}' where id_mahasiswa='${id}' `;
+
+    connection.query(sql, function (error, rows, fields) {
+        if (error) {
+            response.notOk(error, res);
+        } else {
+            response.ok(rows.message, res);
+        }
+    })
+}
